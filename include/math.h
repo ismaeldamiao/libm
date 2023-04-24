@@ -1,7 +1,7 @@
 /* *****************************************************************************
    MIT License
 
-   Copyright (C) 2023 I.F.F. dos SANTOS
+   Copyright (c) 2023 I.F.F. dos SANTOS
 
    Permission is hereby granted, free of charge, to any person obtaining a copy 
    of this software and associated documentation files (the “Software”), to 

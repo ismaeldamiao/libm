@@ -1,7 +1,7 @@
 /* *****************************************************************************
    MIT License
 
-   Copyright (C) 2023 I.F.F. dos SANTOS
+   Copyright (c) 2023 I.F.F. dos SANTOS
 
    Permission is hereby granted, free of charge, to any person obtaining a copy 
    of this software and associated documentation files (the “Software”), to 
@@ -29,7 +29,8 @@ extern "C" {
 #endif
 
 #if defined(__STDC_VERSION__) && (__STDC_VERSION__ >= 199901L)
-/* C99 (ISO/IEC 9899:1999) compatible source code. */
+/* ISO/IEC 9899:1999
+   7.3 Complex arithmetic <complex.h> */
 
 #define complex _Complex
 #define imaginary _Imaginary
@@ -49,6 +50,10 @@ extern "C" {
    }).m_complex)
 # define I _Complex_I
 #endif
+
+
+#pragma STDC CX_LIMITED_RANGE off
+
 
 #define __CMPLX_DECLS0(name) \
    double      name   (double      _Complex);\
@@ -95,7 +100,7 @@ __CMPLX_DECLS0(cimag)
 
 #define __CIMAG(z, type) ((\
    (union {type _Complex m_complex; type ma_real[2];}){\
-      .m_complex = (type complex)(z)\
+      .m_complex = (type _Complex)(z)\
    }).ma_real[1])
 
 #define cimag(z)  __CIMAG(z, double)
@@ -109,8 +114,12 @@ __CMPLX_DECLS0(cimag)
 #endif /* ISO C99 */
 
 
+
+
+
 #if defined(__STDC_VERSION__) && (__STDC_VERSION__ >= 201112L)
-/* C11 (ISO/IEC 9899:2011) compatible source code. */
+/* ISO/IEC 9899:2011
+   7.3 Complex arithmetic <complex.h> */
 
 #if defined(_Imaginary_I)
 # define __CMPLX(x, y, type) ((type)(x) + _Imaginary_I * (type)(y))
