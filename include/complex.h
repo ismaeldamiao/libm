@@ -94,7 +94,7 @@ __CMPLX_DECLS0(cimag)
 #undef __CMPLX_DECLS2
 
 #define __CIMAG(z, type) ((\
-   (union {double _Complex m_complex; double ma_real[2];}){\
+   (union {type _Complex m_complex; type ma_real[2];}){\
       .m_complex = (type complex)(z)\
    }).ma_real[1])
 
