@@ -89,8 +89,12 @@ __CMPLX_DECLS0(cabs)
 __CMPLX_DECLS0(carg)
 __CMPLX_DECLS0(cimag)
 
+#undef __CMPLX_DECLS0
+#undef __CMPLX_DECLS1
+#undef __CMPLX_DECLS2
+
 #define __CIMAG(z, type) ((\
-   (union {double complex m_complex; double ma_real[2];}){\
+   (union {double _Complex m_complex; double ma_real[2];}){\
       .m_complex = (type complex)(z)\
    }).ma_real[1])
 
@@ -112,7 +116,7 @@ __CMPLX_DECLS0(cimag)
 # define __CMPLX(x, y, type) ((type)(x) + _Imaginary_I * (type)(y))
 #else
 #  define __CMPLX(x, y, type) ((\
-   (union {type complex m_complex; type ma_real[2];}){\
+   (union {type _Complex m_complex; type ma_real[2];}){\
       .ma_real = {(type)(x), (type)(y)}\
    }).m_complex)
 #endif /* _Imaginary_I */
